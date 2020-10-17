@@ -2,35 +2,37 @@ namespace Pizza
 {
     public class PizzaBuilder
     {
-        private readonly Pizza _pizza = new Pizza();
+        private Pizza _pizza = new Pizza();
 
-        public Pizza AddCheese()
+        public PizzaBuilder AddCheese()
         {
             _pizza.Cheese = true;
-            return _pizza;
+            return this;
         }
 
-        public Pizza AddTomatoes()
+        public PizzaBuilder AddTomatoes()
         {
             _pizza.Tomatoes = true;
-            return _pizza;
+            return this;
         }
 
-        public Pizza AddOlives()
+        public PizzaBuilder AddOlives()
         {
             _pizza.Olives = true;
-            return _pizza;
+            return this;
         }
 
-        public Pizza AddMeat()
+        public PizzaBuilder AddMeat()
         {
             _pizza.Meat = true;
-            return _pizza;
+            return this;
         }
 
         public Pizza Create()
         {
-            return _pizza;
+            var result = _pizza;
+            _pizza = new Pizza();
+            return result;
         }
     }
 }
