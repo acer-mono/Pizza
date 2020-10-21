@@ -48,29 +48,35 @@
 
 ### Реализация
 #### Ввод
-При запуске приложения необходимо ответить на список вопросов, позволяющих выбрать или отказаться от определенного ингредиента. 
-Чтобы отказаться от добавления, нажмите Enter. Чтобы добавить продукт, введите любой символ или строку.
+При запуске приложения необходимо ввести наименование желаемой пиццы из предложенных вариантов.
 
 Пример:
 
 ```bash
 $ /path/to/Pizza.exe
+Enter pizza's name: 
+Margarita
+Carbonara
+Italian
+Pepperoni
 
-Cheese?(to pass press enter) 
-Tomatoes?(to pass press enter) 
-Olives?(to pass press enter) Yes
-Meat?(to pass press enter) Yes
+Italian
 ```
 
 #### Вывод 
-Состав сконструированной пиццы.
+Выводится процесс создания и состав сконструированной пиццы.
 
 Пример:
 
 ```
-Your choice:
-Cheese: No
-Tomatoes: No
+Add cheese
+Add tomatoes
+Add olives
+Add meat
+
+Pizza: Italian
+Cheese: Yes
+Tomatoes: Yes
 Olives: Yes
 Meat: Yes
 ```

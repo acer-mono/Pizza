@@ -1,41 +1,35 @@
 using System;
+using Pizza.Builders;
+using Pizza.Pizzas;
 
 namespace Pizza
 {
     public static class Cafe
     {
-        public static Pizza CreatePizza()
+        public static AbstractPizza CreatePizza(string pizzaName)
         {
-            PizzaBuilder pizzaBuilder = new PizzaBuilder();
-            
-            Console.Write("Cheese?(to pass press enter) ");
-            var answer = Console.ReadLine();
-            if (!string.IsNullOrEmpty(answer))
-            {
-                pizzaBuilder.AddCheese();
-            }
-            
-            Console.Write("Tomatoes?(to pass press enter) ");
-            answer = Console.ReadLine();
-            if (!string.IsNullOrEmpty(answer))
-            {
-                pizzaBuilder.AddTomatoes();
-            }
-            
-            Console.Write("Olives?(to pass press enter) ");
-            answer = Console.ReadLine();
-            if (!string.IsNullOrEmpty(answer))
-            {
-                pizzaBuilder.AddOlives();
-            }
-            
-            Console.Write("Meat?(to pass press enter) ");
-            answer = Console.ReadLine();
-            if (!string.IsNullOrEmpty(answer))
-            {
-                pizzaBuilder.AddMeat();
-            }
+            PizzaBuilder pizzaBuilder;
 
+            switch (pizzaName)
+            {
+                case "Margarita": 
+                    pizzaBuilder = new MargaritaBuilder();
+                    pizzaBuilder.AddCheese().AddTomatoes().AddOlives();
+                    break;
+                case "Carbonara": 
+                    pizzaBuilder = new CarbonaraBuilder();
+                    pizzaBuilder.AddCheese().AddTomatoes().AddMeat();
+                    break;
+                case "Italian":
+                    pizzaBuilder = new ItalianBuilder();
+                    pizzaBuilder.AddCheese().AddTomatoes().AddOlives().AddMeat();
+                    break;
+                case "Pepperoni":
+                    pizzaBuilder = new PepperoniBuilder();
+                    pizzaBuilder.AddCheese().AddTomatoes().AddMeat();
+                    break;
+                default: throw new InvalidOperationException("Пицца с указанным именем не существует");
+            }
             return pizzaBuilder.Create();
         }
     }

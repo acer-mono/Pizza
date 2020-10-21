@@ -1,7 +1,8 @@
-namespace Pizza
+namespace Pizza.Pizzas
 {
-    public class Pizza
+    public abstract class AbstractPizza
     {
+        protected string Name { get; set; }
         public bool Cheese { get; set; }
         public bool Tomatoes { get; set; }
         public bool Olives { get; set; }
@@ -10,7 +11,7 @@ namespace Pizza
         public string ShowComposition()
         {
             return 
-                $"Your choice:\n" +
+                $"\nPizza: {Name}\n" +
                 $"Cheese: {(Cheese ? "Yes" : "No")}\n"+
                 $"Tomatoes: {(Tomatoes ? "Yes" : "No")}\n" +
                 $"Olives: {(Olives ? "Yes" : "No")}\n" +

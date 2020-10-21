@@ -1,4 +1,5 @@
 ﻿using System;
+using Pizza.Pizzas;
 
 namespace Pizza
 {
@@ -6,8 +7,21 @@ namespace Pizza
     {
         static void Main(string[] args)
         {
-            Pizza pizza = Cafe.CreatePizza();
-            Console.WriteLine(pizza.ShowComposition());
+            Console.WriteLine("Enter pizza's name: \n" +
+                              "Margarita\n" +
+                              "Carbonara\n" +
+                              "Italian\n" +
+                              "Pepperoni\n");
+            var pizzaName = Console.ReadLine();
+            try
+            {
+                AbstractPizza abstractPizza = Cafe.CreatePizza(pizzaName);
+                Console.WriteLine(abstractPizza.ShowComposition());
+            }
+            catch (InvalidOperationException e)
+            {
+                Console.WriteLine(e.Message);
+            }
         }
     }
 }
